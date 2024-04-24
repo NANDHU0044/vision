@@ -1,0 +1,20 @@
+module stma (
+input a,b,x,clk,
+output da,db,y
+ );
+and(y,b,1'b1);
+d_flip_flop d1 (~x,clk,1'b0,da);
+d_flip_flop d2 (x,clk,1'b0,db);
+ endmodule 
+module d_flip_flop (
+input d,clk,rst,
+output reg q
+ );
+always @(posedge clk)
+begin
+if(rst==1'b1)
+q=0;
+else
+ q<=d; 
+end
+endmodule
